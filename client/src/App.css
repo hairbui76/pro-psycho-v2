@@ -1,0 +1,177 @@
+* {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue";
+}
+
+Content {
+	margin: 24px 16px;
+	padding: 24px;
+	min-height: 800px;
+	background: #ffffff;
+}
+
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.header {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.inputContainer {
+	padding-left: 5%;
+	width: 75%;
+}
+
+.header .iconsContainer {
+	display: flex;
+	padding-right: 2%;
+}
+
+.header .iconsContainer .button {
+	/* background: #001529; */
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.3s linear;
+	background-color: #00d87d;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.header .iconsContainer button:hover {
+	opacity: 0.5;
+}
+
+.header .icons {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	font-size: 20px;
+}
+
+.header .icons a {
+	color: #8e9398;
+	transition: color 0.3s linear;
+}
+
+.header .icons a:hover {
+	color: #001529;
+}
+
+.header .icons li {
+	margin: 0 20px 0 0;
+}
+
+.footer > * {
+	position: relative;
+}
+
+.contactInfo {
+	padding: 10px 0;
+	display: inline-block;
+}
+
+.footer .contactInfo ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.footer .contactInfo li {
+	margin: 0 30px 0 0;
+}
+
+.footer .contactInfo li span {
+	margin: 0 5px 0 0;
+}
+
+.footer .contactInfo a {
+	color: #001529;
+}
+
+.footer .otherInfo {
+	display: inline-block;
+	float: right;
+}
+
+.footer .otherInfo ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	font-size: 20px;
+}
+
+.footer .socialMedia li {
+	margin: 0 20px 0 0;
+}
+
+.footer .socialMedia a {
+	color: #001529;
+	transition: color 0.3s linear;
+}
+
+.footer .socialMedia a:hover {
+	color: #8e9398;
+}
+
+.post p {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+.post .button {
+	margin-top: 40px;
+	display: inline-block;
+}
+
+.post .button:hover {
+	color: #1677ff;
+	transition: color 0.3s linear;
+	cursor: pointer;
+}
+
+#area {
+	width: 100%;
+	min-height: 100px;
+	margin-top: 20px;
+}

@@ -1,0 +1,14 @@
+.ant-upload.ant-upload-select,
+.ant-upload-list-item-container {
+	margin: 0 !important;
+}
+
+.thumbnail__container .ant-upload-list-item-container,
+.thumbnail__container .ant-upload-select {
+	width: 100% !important;
+	min-height: calc(100px + 15vw) !important;
+}
+
+.thumbnail__container .ant-upload-list-item-container img {
+	object-fit: cover !important;
+}

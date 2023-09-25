@@ -1,0 +1,61 @@
+{
+	"name": "client",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "git init && husky install",
+		"lint": "eslint",
+		"lint:fix": "eslint --format codeframe .",
+		"prettier:check": "prettier --config .prettierrc.json --check .",
+		"prettier:fix": "prettier --config .prettierrc.json --write .",
+		"clean:cache": "rimraf node_modules/.cache",
+		"clean:lib": "rimraf node_modules package-lock.json",
+		"reinstall": "npm run clean:lib && npm install"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.4.2",
+		"@fortawesome/free-regular-svg-icons": "^6.4.2",
+		"@fortawesome/free-solid-svg-icons": "^6.4.2",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"@mryasuo/react-chat-window-ui": "^0.2.1",
+		"antd": "^5.9.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-pdf": "^7.4.0",
+		"react-router-dom": "^6.16.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.23.0",
+		"@babel/eslint-parser": "^7.22.15",
+		"@babel/preset-env": "^7.22.20",
+		"@babel/preset-react": "^7.22.15",
+		"@types/react": "^18.2.22",
+		"@types/react-dom": "^18.2.7",
+		"@vitejs/plugin-react-swc": "^3.4.0",
+		"eslint": "^8.50.0",
+		"eslint-formatter-codeframe": "^7.32.1",
+		"eslint-plugin-react": "^7.33.2",
+		"husky": "^8.0.3",
+		"lint-staged": "^14.0.1",
+		"prettier": "^3.0.3",
+		"react-router-dom": "^6.16.0",
+		"vite": "^4.4.9",
+		"vite-plugin-babel-macros": "^1.0.6"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx}": [
+			"npm run prettier:fix",
+			"npm run lint"
+		],
+		"src/**/*.css": "npm run prettier:fix"
+	}
+}

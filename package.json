@@ -1,0 +1,84 @@
+{
+	"name": "pro_psycho",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/server.js",
+	"imports": {
+		"#models": "./src/models/index.js",
+		"#models/*": "./src/models/*.js",
+		"##models/*": "./src/models/*/index.js",
+		"#middlewares": "./src/middlewares/index.js",
+		"#middlewares/*": "./src/middlewares/*.js",
+		"##middlewares/*": "./src/middlewares/*/index.js",
+		"#configs": "./src/configs/index.js",
+		"#configs/*": "./src/configs/*.js",
+		"##configs/*": "./src/configs/*/index.js",
+		"#routes": "./src/routes/index.js",
+		"#routes/*": "./src/routes/*.js",
+		"##routes/*": "./src/routes/*/index.js",
+		"#controllers": "./src/controllers/index.js",
+		"#controllers/*": "./src/controllers/*.js",
+		"##controllers/*": "./src/controllers/*/index.js",
+		"#utils": "./src/utils/index.js",
+		"#utils/*": "./src/utils/*.js",
+		"##utils/*": "./src/utils/*/index.js",
+		"#handlers": "./src/handlers/index.js",
+		"#handlers/*": "./src/handlers/*.js",
+		"##handlers/*": "./src/handlers/*/index.js",
+		"#services": "./src/services/index.js",
+		"#services/*": "./src/services/*.js",
+		"##services/*": "./src/services/*/index.js"
+	},
+	"scripts": {
+		"dev": "concurrently -n client,server -c blue,green \"npm run dev:client\" \"npm run dev:server\"",
+		"dev:client": "cd client && npm run dev",
+		"dev:server": "nodemon -L --trace-warnings --verbose src/server.js",
+		"lint": "eslint .",
+		"lint:fix": "eslint --format codeframe .",
+		"prettier:check": "prettier --config .prettierrc.json --check .",
+		"prettier:fix": "prettier --config .prettierrc.json --write .",
+		"prepare": "git init && husky install && cd client && npm install",
+		"clean:cache": "rimraf node_modules/.cache",
+		"clean:lib": "rimraf node_modules package-lock.json",
+		"reinstall": "npm run clean:lib && npm install"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.418.0",
+		"@fastify/cookie": "^9.1.0",
+		"@fastify/cors": "^8.4.0",
+		"@fastify/middie": "^8.3.0",
+		"@fastify/multipart": "^7.7.3",
+		"argon2": "^0.31.1",
+		"cloudinary": "^1.40.0",
+		"dotenv": "^16.3.1",
+		"fastify": "^4.23.2",
+		"http-status": "^1.7.0",
+		"luxon": "^3.4.3",
+		"mongoose": "^7.5.2",
+		"msgpackr": "^1.9.9",
+		"paseto": "^3.1.4"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.1",
+		"eslint": "^8.50.0",
+		"eslint-formatter-codeframe": "^7.32.1",
+		"husky": "^8.0.3",
+		"lint-staged": "^14.0.1",
+		"nodemon": "^3.0.1",
+		"pino-pretty": "^10.2.0",
+		"prettier": "^3.0.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**": [
+			"npm run prettier:fix",
+			"npm run lint"
+		]
+	}
+}
