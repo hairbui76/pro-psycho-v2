@@ -7,6 +7,7 @@ const { errorHandler, notFoundHandler } = require("#middlewares");
 
 const { db, config, route } = require("#configs");
 const { Router } = require("#utils");
+const { connectRedis } = require("#configs/redis");
 
 /**
  *
@@ -39,6 +40,9 @@ const appInit = async (opts = {}) => {
 
 	/* ----------------- connect to database ---------------- */
 	await app.register(db);
+
+	/* ------------------ connect to redis ------------------ */
+	await app.register(connectRedis);
 
 	app.decorate("router", function () {
 		return new Router(this);

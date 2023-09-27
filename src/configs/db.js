@@ -1,13 +1,12 @@
 const mongoose = require("./mongoose");
 const config = require("./config");
 
-const db = async () => {
+const db = async (_fastify, _opts) => {
 	mongoose.set("strictQuery", true);
-	console.log(config.DBUri);
 	await mongoose.connect(config.DBUri, {
 		dbName: config.DB.DATABASE,
 	});
-	console.log("connected to mongodb");
+	console.log("Connected to mongodb");
 };
 
 module.exports = db;

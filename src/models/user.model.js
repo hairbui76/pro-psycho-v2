@@ -36,9 +36,6 @@ const UserSchema = new Schema(
 	}
 );
 
-const schemaType = UserSchema.createJoiValidation();
-console.log(JSON.stringify(schemaType));
-
 UserSchema.methods.getAccessTokenPayload = function () {
 	return {
 		id: this._id,

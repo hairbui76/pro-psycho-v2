@@ -1,4 +1,4 @@
-const redisClient = require("./redis");
+const { redisClient } = require("./redis");
 
 /* abstract */ class SessionStore {
 	findSession(_id) {}
