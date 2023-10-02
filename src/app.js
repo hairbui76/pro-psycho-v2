@@ -1,11 +1,11 @@
 const fastify = require("fastify");
 const cookie = require("@fastify/cookie");
 const cors = require("@fastify/cors");
-// const middie = require("@fastify/middie");
 const fastifyMultipart = require("@fastify/multipart");
 const { errorHandler, notFoundHandler } = require("#middlewares");
 
-const { db, config, route } = require("#configs");
+const { db, config } = require("#configs");
+const routes = require("#routes");
 const { Router } = require("#utils");
 const { connectRedis } = require("#configs/redis");
 
@@ -16,9 +16,6 @@ const { connectRedis } = require("#configs/redis");
  */
 const appInit = async (opts = {}) => {
 	const app = fastify(opts);
-
-	/* ------------- Enable middlewares support ------------- */
-	// await app.register(middie);
 
 	/* ---------- add multipart support (form-data) --------- */
 	app.register(fastifyMultipart, {
@@ -48,8 +45,19 @@ const appInit = async (opts = {}) => {
 		return new Router(this);
 	});
 
+	/* ----------------- get signed cookies ----------------- */
+	app.addHook("onRequest", (request, _reply, done) => {
+		const { cookies } = request;
+		const signedCookies = {};
+		for (const key in cookies) {
+			signedCookies[key] = request.unsignCookie(cookies[key]).value;
+		}
+		request.signedCookies = signedCookies;
+		done();
+	});
+
 	/* -------------------- setup routes -------------------- */
-	app.register(route);
+	app.register(routes);
 
 	/* --------------- not found route handler -------------- */
 	app.setNotFoundHandler(notFoundHandler);

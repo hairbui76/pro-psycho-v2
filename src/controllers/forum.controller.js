@@ -1,7 +1,7 @@
 const { Post, Comment, Reaction } = require("##models/forum");
 const { ApiError } = require("#utils");
 const mongoose = require("#configs/mongoose");
-const { uploadCloudinary } = require("#services/cloudinary.service");
+const { upload } = require("#configs/cloudinary");
 const httpStatus = require("http-status");
 
 const getAllPosts = async (request, reply) => {
@@ -151,7 +151,7 @@ const createNewPost = async (request, reply) => {
 	if (request.body.title) post.title = request.body.title.value;
 	if (request.body.content) post.content = request.body.content.value;
 	if (request.body.image) {
-		const { url } = await uploadCloudinary(request.body.image);
+		const { url } = await upload(request.body.image);
 		post.imgUrl = url;
 	}
 	const newPost = new Post({ ...post, createdBy: request.user.id });
@@ -169,7 +169,7 @@ const updatePostById = async (request, reply) => {
 	if (request.body.title) post.title = request.body.title.value;
 	if (request.body.content) post.content = request.body.content.value;
 	if (request.body.image) {
-		const { url } = await uploadCloudinary(request.body.image);
+		const { url } = await upload(request.body.image);
 		post.imgUrl = url;
 	}
 	await post.save();

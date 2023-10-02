@@ -1,5 +1,5 @@
 const User = require("#models/user.model");
-const { uploadCloudinary } = require("#services/cloudinary.service");
+const { upload } = require("#configs/cloudinary");
 const { verifyPassword } = require("#services/auth.service");
 const { ApiError } = require("#utils");
 const httpStatus = require("http-status");
@@ -27,9 +27,8 @@ const updateUser = async (request, reply) => {
 	if (request.body.role) user.role = request.body.role.value;
 	let avatarUpload;
 	let thumbnailUpload;
-	if (request.body.avatar) avatarUpload = uploadCloudinary(request.body.avatar);
-	if (request.body.thumbnail)
-		thumbnailUpload = uploadCloudinary(request.body.thumbnail);
+	if (request.body.avatar) avatarUpload = upload(request.body.avatar);
+	if (request.body.thumbnail) thumbnailUpload = upload(request.body.thumbnail);
 	[avatarUpload, thumbnailUpload] = await Promise.all([
 		avatarUpload,
 		thumbnailUpload,

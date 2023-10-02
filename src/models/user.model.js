@@ -5,7 +5,7 @@ const globalTransform = mongoose.globalTransform;
 
 const UserSchema = new Schema(
 	{
-		username: { type: String, unique: true },
+		username: { type: String, unique: true, required: true },
 		firstName: { type: String, required: true },
 		surName: { type: String, required: true },
 		dateOfBirth: {
@@ -15,7 +15,7 @@ const UserSchema = new Schema(
 		phoneNumber: { type: String, unique: true },
 		email: { type: String, unique: true },
 		address: String,
-		password: String,
+		password: { type: String, required: true },
 		avatarUrl: String,
 		thumbnailUrl: String,
 		role: { type: String, default: "user" },
@@ -36,7 +36,7 @@ const UserSchema = new Schema(
 	}
 );
 
-UserSchema.methods.getAccessTokenPayload = function () {
+UserSchema.methods.getPublicInfo = function () {
 	return {
 		id: this._id,
 		firstName: this.firstName,

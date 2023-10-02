@@ -1,8 +1,7 @@
 const dotenv = require("dotenv");
-const path = require("path");
 const { createSecretKey } = require("crypto");
 
-dotenv.config({ path: path.join(__dirname, "../../.env") });
+dotenv.config();
 
 const config = {
 	BASE: {
@@ -17,17 +16,14 @@ const config = {
 		DATABASE: process.env.MONGOOSE_DB_NAME,
 	},
 	CORS: {
-		methods: ["GET", "POST", "PATCH", "DELETE"],
+		methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
 		origin: ["localhost:3000", "http://localhost:3000"],
 		credentials: true,
 		optionsSuccessStatus: 200,
 	},
 	TOKEN: {
 		SECRET: createSecretKey(process.env.TOKEN_SECRET),
-		TOKEN_EXPIRE: process.env.TOKEN_EXPIRE_HOURS,
-		RESET_TOKEN_EXPIRE: process.env.TOKEN_VERIFY_EXPIRE_MINUTES * 60 * 1000,
-		REFRESH_TOKEN_EXPIRE:
-			process.env.REFRESH_TOKEN_EXPIRE_WEEKS * 7 * 24 * 60 * 60 * 1000,
+		TOKEN_EXPIRE_HOURS: process.env.TOKEN_EXPIRE_HOURS,
 		REFRESH_TOKEN_EXPIRE_WEEKS: process.env.REFRESH_TOKEN_EXPIRE_WEEKS,
 	},
 	COOKIE: {

@@ -23,7 +23,7 @@ const Login = ({ messageApi }) => {
 			}),
 		});
 		const { message, user } = await res.json();
-		if (res.status === 202) {
+		if (res.status === 200) {
 			setUser(user);
 			messageApi.success(message);
 		} else messageApi.error(message);

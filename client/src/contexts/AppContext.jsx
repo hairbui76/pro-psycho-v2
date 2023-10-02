@@ -17,7 +17,8 @@ const AppContextProvider = ({ children }) => {
 				credentials: "include",
 			});
 			const response = await res.json();
-			if (res.status === 202) {
+			if (res.status === 200) {
+				console.log("Authenticated!!!");
 				setUser(response.user);
 			}
 		})();

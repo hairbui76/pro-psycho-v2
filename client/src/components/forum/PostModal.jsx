@@ -170,7 +170,7 @@ export default function PostModal(props) {
 				}}
 			>
 				<Upload
-					accept="image/jpg,image/jpeg"
+					accept=".jpg,.jpeg"
 					listType="picture-card"
 					fileList={postData.fileList}
 					beforeUpload={() => false}

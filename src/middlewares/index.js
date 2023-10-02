@@ -1,9 +1,9 @@
 const errorHandler = require("./errorHandler");
 const notFoundHandler = require("./notFoundHandler");
-const verifyToken = require("./verifyToken");
+const { verifyTokenHandler } = require("./verifyTokenHandler");
 
 module.exports = {
 	errorHandler,
 	notFoundHandler,
-	verifyToken,
+	verifyTokenHandler,
 };

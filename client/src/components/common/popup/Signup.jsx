@@ -23,6 +23,7 @@ const styles = {
 		transform: "translateX(-50%)",
 		backgroundColor: "white",
 		borderRadius: "50%",
+		zIndex: 1,
 	},
 };
 
@@ -88,7 +89,7 @@ const Signup = ({ messageApi }) => {
 		formData.append("username", formvalue.username);
 		formData.append("firstName", formvalue.firstName);
 		formData.append("surName", formvalue.surName);
-		formData.append("dateOfBirth", dateOfBirth);
+		formData.append("dOB", dateOfBirth);
 		formData.append("phoneNumber", formvalue.phoneNumber);
 		formData.append("email", formvalue.email);
 		formData.append("address", formvalue.address);
@@ -159,6 +160,7 @@ const Signup = ({ messageApi }) => {
 									onPreview={handlePreview}
 									onChange={handleCoverChange}
 									beforeUpload={() => false}
+									accept=".jpg,.jpeg"
 									listType="picture-card"
 									style={{ width: "100%", minHeight: "calc(100px + 15vw)" }}
 								>
@@ -178,6 +180,7 @@ const Signup = ({ messageApi }) => {
 									onPreview={handlePreview}
 									onChange={handleAvatarChange}
 									beforeUpload={() => false}
+									accept=".jpg,.jpeg"
 								>
 									{avatarFileList.length ? null : uploadButton}
 								</Upload>

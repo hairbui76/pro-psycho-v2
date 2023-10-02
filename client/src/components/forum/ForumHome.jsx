@@ -20,9 +20,11 @@ function ForumHome() {
 		(async () => {
 			const res = await fetch(`${config.API_ENDPOINT}/forum/posts`);
 			const response = await res.json();
-			const { data, message } = response;
-			messageApi.success(message);
-			setPostArray(data);
+			const { data } = response;
+			if (res.status === 200) {
+				messageApi.success("Get all posts successfully!!");
+				setPostArray(data);
+			}
 		})();
 	}, []);
 
