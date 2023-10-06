@@ -20,7 +20,6 @@ const appInit = async (opts = {}) => {
 	/* ---------- add multipart support (form-data) --------- */
 	app.register(fastifyMultipart, {
 		attachFieldsToBody: true,
-		throwFileSizeLimit: false,
 	});
 
 	/* -------------------- register cors ------------------- */

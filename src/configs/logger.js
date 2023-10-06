@@ -1,11 +1,11 @@
 const pino = require("pino");
 const pretty = require("pino-pretty");
 const prettyPrint = {
-	colorize: true,
 	levelFirst: true,
 	translateTime: "yyyy/mm/dd HH:MMo",
 };
 if (process.env.NODE_ENV !== "production") {
+	prettyPrint.colorize = true;
 	prettyPrint.ignore = "pid,hostname,reqId,res,req,responseTime";
 	prettyPrint.messageFormat =
 		"{msg} [{req.method} {req.url}:> {responseTime}ms]";

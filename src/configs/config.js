@@ -1,5 +1,4 @@
 const dotenv = require("dotenv");
-const { createSecretKey } = require("crypto");
 
 dotenv.config();
 
@@ -15,6 +14,10 @@ const config = {
 		PORT: process.env.MONGOOSE_PORT,
 		DATABASE: process.env.MONGOOSE_DB_NAME,
 	},
+	REDIS: {
+		PORT: process.env.REDIS_PORT,
+		HOST: process.env.REDIS_HOST,
+	},
 	CORS: {
 		methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
 		origin: ["localhost:3000", "http://localhost:3000"],
@@ -22,7 +25,7 @@ const config = {
 		optionsSuccessStatus: 200,
 	},
 	TOKEN: {
-		SECRET: createSecretKey(process.env.TOKEN_SECRET),
+		SECRET: process.env.TOKEN_SECRET,
 		TOKEN_EXPIRE_HOURS: process.env.TOKEN_EXPIRE_HOURS,
 		REFRESH_TOKEN_EXPIRE_WEEKS: process.env.REFRESH_TOKEN_EXPIRE_WEEKS,
 	},
