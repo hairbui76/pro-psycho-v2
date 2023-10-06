@@ -56,17 +56,21 @@ docker-compose up --build
 
 #### Client
 
-1. Bundle the application
+1. First, change directory to `./client`
 
 ```bash
 cd client
+```
+
+2. Bundle the application
+
+```bash
 npm run build
 ```
 
 2. Build the image with Docker
 
 ```bash
-cd client
 docker build . -t propsycho_client -f Dockerfile-nginx
 ```
 
