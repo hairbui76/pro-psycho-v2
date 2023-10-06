@@ -46,8 +46,32 @@ Docker installed, follow the [official](https://docs.docker.com/engine/install/)
 
 ### Deploy on your own machine
 
+#### Server
+
 Build the image and run the container with Docker compose
 
 ```bash
 docker-compose up --build
+```
+
+#### Client
+
+1. Bundle the application
+
+```bash
+cd client
+npm run build
+```
+
+2. Build the image with Docker
+
+```bash
+cd client
+docker build . -t propsycho_client -f Dockerfile-nginx
+```
+
+3. Run the container with Docker
+
+```bash
+docker run -p 3000:80 propsycho_client
 ```
